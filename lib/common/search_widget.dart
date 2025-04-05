@@ -23,22 +23,18 @@ class SearchWidget extends StatelessWidget {
         prefixIcon: Image.asset("assets/search.png"),
         // prefixIconConstraints:BoxConstraints(maxWidth: 40),
         isDense: true,
+        filled: true,
+        fillColor: grayBackground,
         contentPadding:
         const EdgeInsets.symmetric(vertical: 14, horizontal: 15),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            width: 1,
-            color: smokegray,
-          ),
+          borderSide: BorderSide.none,
             borderRadius: BorderRadius.all(
               Radius.circular(30.0),
             )
         ),
         border: const OutlineInputBorder(
-            borderSide: BorderSide(
-              width: 1,
-              color: lightergray,
-            ),
+            borderSide: BorderSide.none,
             borderRadius: BorderRadius.all(
               Radius.circular(30.0),
             )),
