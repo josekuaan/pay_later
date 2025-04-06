@@ -8,6 +8,7 @@ class ProductCard extends StatelessWidget {
   final String iconText;
   final String iconSubtext;
   final String iconImage;
+  final double width;
 
   const ProductCard({
     Key? key,
@@ -18,6 +19,7 @@ class ProductCard extends StatelessWidget {
     required this.iconText,
     required this.iconSubtext,
     required this.iconImage,
+    required this.width,
   }) : super(key: key);
 
   @override
@@ -25,6 +27,7 @@ class ProductCard extends StatelessWidget {
     return Container(
       width: 165,
       height: 174,
+      margin: const EdgeInsets.only(right: 20),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10)),
@@ -35,6 +38,7 @@ class ProductCard extends StatelessWidget {
           children: [
             SizedBox(
               height: 120,
+
               child: Stack(
                 children: [
                   Positioned.fill(
@@ -55,27 +59,44 @@ class ProductCard extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 25,
                         backgroundColor: Colors.white,
-                        child: Column(
+                        child:iconText.isEmpty?Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                        children: [ Image.asset(
+                          iconImage,
+
+                          fit: BoxFit.contain,
+                          height: 30,
+                        ),],
+                        ):
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              iconText,
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'Avenir',
+                            SizedBox(
+                              width: 165,
+                              child: Text(
+                                iconText,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Avenir',
+                                  overflow: TextOverflow.ellipsis
+                                ),
+                                textScaler: MediaQuery.of(context).textScaler,
                               ),
                             ),
                             Text(
                               iconSubtext,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 12,
                                 color: Colors.blue,
                                 fontWeight: FontWeight.w500,
                                 fontFamily: 'Avenir',
+
                               ),
+                              textScaler: MediaQuery.of(context).textScaler,
                             ),
                           ],
                         ),
@@ -85,9 +106,10 @@ class ProductCard extends StatelessWidget {
                 ],
               ),
             ),
+            width>600?SizedBox(height: 20):Container(),
             Text(
               productName,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
                   fontFamily: 'Avenir'),
@@ -97,7 +119,7 @@ class ProductCard extends StatelessWidget {
               children: [
                 Text(
                   price,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                     color: Colors.blue,
                     fontWeight: FontWeight.w700,
@@ -106,7 +128,7 @@ class ProductCard extends StatelessWidget {
                 ),
                 Text(
                   originalPrice,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 12,
                     color: Color(0xffB3B3CC),
                     fontWeight: FontWeight.w500,
